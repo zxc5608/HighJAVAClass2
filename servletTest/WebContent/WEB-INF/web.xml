@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>servletTest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>filter01</filter-name>
+    <filter-class>kr.or.ddit.filter.FilterTest01</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>filter01</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>filter02</filter-name>
+    <filter-class>kr.or.ddit.filter.FilterTest02</filter-class>
+    <init-param>
+      <param-name>tester</param-name>
+      <param-value>홍길동</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>filter02</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>ipchkFilter</filter-name>
+    <filter-class>kr.or.ddit.filter.IPCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ipchkFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>wrapperFilter</filter-name>
+  	<filter-class>kr.or.ddit.wrapper.RequestWrapperFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>wrapperFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>servletTest01</servlet-name>
+    <servlet-class>kr.or.ddit.basic.ServletTest01</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletTest01</servlet-name>
+    <url-pattern>/servletTest01.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>servletTest05</servlet-name>
+    <servlet-class>kr.or.ddit.basic.ServletTest05</servlet-class>
+    <init-param>
+      <param-name>AdminEmail</param-name>
+      <param-value>admin@ddit.or.kr</param-value>
+    </init-param>
+    <init-param>
+      <param-name>userName</param-name>
+      <param-value>홍길동</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletTest05</servlet-name>
+    <url-pattern>/servletTest05.do</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>myContext</param-name>
+    <param-value>연습용 컨텍스트 파라미터 값</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>servletTest08</servlet-name>
+    <servlet-class>kr.or.ddit.basic.ServletTest08</servlet-class>
+    <init-param>
+      <param-name>start</param-name>
+      <param-value>1</param-value>
+    </init-param>
+    <init-param>
+      <param-name>end</param-name>
+      <param-value>50</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletTest08</servlet-name>
+    <url-pattern>/servletTest08.do</url-pattern>
+  </servlet-mapping>
+</web-app>

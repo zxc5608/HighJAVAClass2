@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 ibtis의 환경 설정용 xml문서 입니다. -->
+<!DOCTYPE sqlMapConfig
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<!--  
+		DB와 연결하는 정보를 properties파일에 설정해 놓고
+	 	이 properties파일의 내용을 읽어올 수 있도록 설정한다. -->
+	<properties resource="ibatis/config/dbinfo.properties"/>
+	
+	<!-- 
+		각각의 sqlMap파일의 namespace와 id속성값을 연결해서 실행할 쿼리문을 선택한다.
+	 -->
+	<settings useStatementNamespaces="true"/>
+	
+	<!-- 
+		쿼리문에서 사용할 VO객체는 패키지 이름을 포함한 전체 이름을 사용해야 하는데
+		그렇게 되면 문장이 너무 길어질 수 있다.
+		그래서 전체 이름 대신 사용할 alias를 설정할 수 있다.
+		형식: <typeAlias alias="alias명" type="클래스의 전체이름"/>
+	 -->
+	<typeAlias alias="adminVO" type="vo.adminVO"/> 
+	<typeAlias alias="basketVO" type="vo.basketVO"/> 
+	<typeAlias alias="categoryVO" type="vo.categoryVO"/> 
+	<typeAlias alias="communityVO" type="VO.communityVO"/> 
+	<typeAlias alias="fnqVO" type="VO.fnqVO"/> 
+	<typeAlias alias="memberVO" type="vo.memberVO"/> 
+	<typeAlias alias="movieVO" type="vo.movieVO"/> 
+	<typeAlias alias="noticeVO" type="vo.noticeVO"/> 
+	<typeAlias alias="qnaVO" type="VO.qnaVO"/> 
+	<typeAlias alias="replyVO" type="VO.replyVO"/> 
+	<typeAlias alias="reportVO" type="vo.reportVO"/> 
+	<typeAlias alias="shoppayVO" type="vo.shoppayVO"/> 
+	<typeAlias alias="stpayVO" type="vo.stpayVO"/> 
+	<typeAlias alias="zzimVO" type="vo.zzimVO"/> 
+	
+	
+	<!-- DB와 연결을 처리하는 부분 -->
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${user}"/>
+			<property name="JDBC.Password" value="${password}"/>
+		</dataSource>
+	</transactionManager>
+	
+	<!-- 실행할 SQL문(mapper)을 등록한다. -->
+	<!-- 
+		실행할 SQL문을 xml문서로 따로 작성한 후 그 xml문서를 아래와 같이 등록하면 된다.
+		형식) <sqlMap resource="경로명/파일명.xml"/>
+	-->
+	
+	<sqlMap resource="ibatis/mapper/admin.xml"/>
+	<sqlMap resource="ibatis/mapper/basket.xml"/>
+	<sqlMap resource="ibatis/mapper/category.xml"/>
+	<sqlMap resource="ibatis/mapper/community.xml"/>
+	<sqlMap resource="ibatis/mapper/fnq.xml"/>
+	<sqlMap resource="ibatis/mapper/member.xml"/>
+	<sqlMap resource="ibatis/mapper/movie.xml"/>
+	<sqlMap resource="ibatis/mapper/notice.xml"/>
+	<sqlMap resource="ibatis/mapper/qna.xml"/>
+	<sqlMap resource="ibatis/mapper/reply.xml"/>
+	<sqlMap resource="ibatis/mapper/report.xml"/>
+	<sqlMap resource="ibatis/mapper/shoppay.xml"/>
+	<sqlMap resource="ibatis/mapper/stpay.xml"/>
+	<sqlMap resource="ibatis/mapper/zzim.xml"/>
+	
+</sqlMapConfig>	
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/dtd-map-2.dtd">
+
+<sqlMap namespace="community">
+      <select id = "listAll" resultClass="communityVO">
+    <!--   	select c.COM_NO, m.MEM_nm, c.TITLE, c.COM_DATE, c.GANRE
+		from member m, community c
+		where m.mem_no = c.mem_no; -->
+		select * from community
+      </select>
+      
+     <update id= "hitUpdate" parameterClass="int"> 
+      	update community set count = count+1 where com_no=#data# 
+      
+      </update> 
+      
+      <update id="updatecommunity" parameterClass="communityVO">
+      	update community set
+    
+ 			title=#title#,
+ 			cont=#cont#
+ 			
+ 			where com_no=#com_no#
+      
+      </update>
+     
+     <insert id= "insertcommunity" parameterClass="communityVO">
+     insert into community
+     						 values(
+		     						community_seq.nextval,
+		     						0,
+		     						#title#,
+		     						#cont#,
+		     						sysdate,
+		     						#ganre#,
+		     						#writer#,
+		     						0
+		     						)
+		     						
+		     <selectKey keyProperty= "community_seq" resultClass="int">
+				select communiy_seq.currval from dual
+			</selectKey>
+     </insert>
+</sqlMap>
